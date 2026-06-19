@@ -36,15 +36,6 @@ async function handleRoute() {
     }
   }
 
-  // If user has data and tries to access landing, redirect to dashboard
-  if (path === '/') {
-    const userData = localStorage.getItem('fittrack_user');
-    if (userData) {
-      navigateTo('/dashboard');
-      return;
-    }
-  }
-
   try {
     // Page transition out
     if (currentPage && appContainer.firstChild) {

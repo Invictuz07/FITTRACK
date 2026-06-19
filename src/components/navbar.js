@@ -30,6 +30,7 @@ export function createNavbar() {
       <div class="nav__actions">
         <button class="btn-icon" id="theme-toggle">${themeIcon}</button>
         <button class="btn-icon" data-nav="/settings">⚙️</button>
+        <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu">☰</button>
       </div>
     </nav>
   `);
@@ -39,6 +40,11 @@ export function createNavbar() {
     el.addEventListener('click', (e) => {
       e.preventDefault();
       navigateTo(el.getAttribute('data-nav'));
+      // Close mobile menu on navigate
+      const links = nav.querySelector('.nav__links');
+      links.classList.remove('nav__links--open');
+      const hamburger = nav.querySelector('#nav-hamburger');
+      hamburger.textContent = '☰';
     });
   });
 
@@ -53,5 +59,14 @@ export function createNavbar() {
     themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
   });
 
+  // Hamburger toggle for mobile
+  const hamburger = nav.querySelector('#nav-hamburger');
+  const navLinksEl = nav.querySelector('.nav__links');
+  hamburger.addEventListener('click', () => {
+    const isOpen = navLinksEl.classList.toggle('nav__links--open');
+    hamburger.textContent = isOpen ? '✕' : '☰';
+  });
+
   return nav;
 }
+

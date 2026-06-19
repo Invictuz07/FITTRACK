@@ -1,9 +1,13 @@
 import { html } from '../utils/dom.js';
 import { navigateTo } from '../router.js';
+import { hasUser } from '../store.js';
 import { addRipple } from '../utils/scrollReveal.js';
 import gsap from 'gsap';
 
 export default async function landingPage() {
+  const userExists = hasUser();
+  const ctaText = userExists ? 'Continue Your Journey →' : 'Start Your Transformation →';
+
   const page = html(`
     <div class="landing">
       <!-- HTML5 Canvas for Starry Universe / Nebula Effect -->
@@ -18,20 +22,23 @@ export default async function landingPage() {
         <p class="landing__subtitle">Your Personalized Fitness Command Center</p>
         
         <div class="landing__image-container">
-          <img src="/images/david.jpg" alt="FitTrack Hero" class="landing__hero-image" />
+          <img src="./images/david.jpg" alt="FitTrack Hero" class="landing__hero-image" />
           <div class="landing__image-glow"></div>
         </div>
         
-        <button class="btn-primary landing__cta-btn ripple-container">Start Your Transformation →</button>
+        <button class="btn-primary landing__cta-btn ripple-container">${ctaText}</button>
       </section>
+
+      <span class="landing__credit">Made by Aziz</span>
     </div>
   `);
 
-  // Navigate to Onboarding
+  // Navigate based on whether user data exists
   const ctaBtn = page.querySelector('.landing__cta-btn');
   ctaBtn.addEventListener('click', (e) => {
     addRipple(e);
-    setTimeout(() => navigateTo('/onboarding'), 300);
+    const destination = userExists ? '/dashboard' : '/onboarding';
+    setTimeout(() => navigateTo(destination), 300);
   });
 
   // GSAP animations for text and image reveal

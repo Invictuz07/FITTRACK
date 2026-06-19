@@ -683,3 +683,125 @@
   border: 1px solid var(--border);
 }
 
+/* ============================================================
+   MOBILE RESPONSIVE — Navbar & Components
+   ============================================================ */
+
+/* Hamburger Button */
+.nav__hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  z-index: 101;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    padding: 0.75rem 1rem;
+    flex-wrap: wrap;
+  }
+
+  .nav__hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    order: 3;
+  }
+
+  .nav__links {
+    display: none;
+    width: 100%;
+    order: 4;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem 0;
+    border-top: 1px solid var(--border);
+    margin-top: 0.5rem;
+  }
+
+  .nav__links.nav__links--open {
+    display: flex;
+  }
+
+  .nav__link {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    border-radius: var(--radius-sm);
+    width: 100%;
+  }
+
+  .nav__link:hover {
+    background: var(--bg-glass);
+  }
+
+  .nav__logo {
+    font-size: 1.25rem;
+    order: 1;
+  }
+
+  .nav__actions {
+    order: 2;
+    margin-left: auto;
+    margin-right: 0.5rem;
+  }
+
+  /* Stat Card Mobile */
+  .stat-card {
+    padding: 1rem;
+  }
+
+  .stat-card__value {
+    font-size: 1.5rem;
+  }
+
+  .stat-card__label {
+    font-size: 0.65rem;
+  }
+
+  /* Toast Mobile */
+  .toast-container {
+    top: 1rem;
+    right: 1rem;
+    left: 1rem;
+  }
+
+  .toast {
+    min-width: auto;
+    width: 100%;
+  }
+
+  /* Modal Mobile */
+  .modal-content {
+    width: 95%;
+    padding: 1.5rem;
+    max-height: 90vh;
+  }
+
+  /* Container Mobile */
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-card__value {
+    font-size: 1.25rem;
+  }
+
+  .btn-primary {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.85rem;
+  }
+
+  .btn-secondary {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.85rem;
+  }
+}

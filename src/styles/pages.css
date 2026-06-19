@@ -35,7 +35,7 @@
    ============================================================ */
 
 .landing {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -203,6 +203,33 @@
 .landing__cta {
   padding: 2rem;
   text-align: center;
+}
+
+.landing__credit {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.12em;
+  z-index: 10;
+  user-select: none;
+  transition: all 0.4s ease;
+  background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(41,121,255,0.5));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+}
+
+.landing__credit:hover {
+  background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(41,121,255,0.9), rgba(168,85,247,0.8));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 8px rgba(41, 121, 255, 0.4));
 }
 
 /* ============================================================
@@ -1284,6 +1311,29 @@
     gap: 1.5rem;
   }
 
+  .landing__hero {
+    padding: 1.5rem;
+  }
+
+  .landing__hero-image {
+    max-height: 30vh;
+    max-width: min(320px, 75vw);
+  }
+
+  .landing__image-container {
+    margin-bottom: 1.5rem;
+  }
+
+  .landing__subtitle {
+    margin-bottom: 1.5rem;
+  }
+
+  .landing__credit {
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 0.6rem;
+  }
+
   .onboarding__card {
     padding: 1.75rem;
   }
@@ -1293,24 +1343,23 @@
   }
 
   .dashboard__stats-grid {
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .dashboard__nav-cards {
     grid-template-columns: 1fr;
   }
 
-  .nav {
-    padding: 0.75rem 1rem;
+  .dashboard__progress-section {
+    grid-template-columns: 1fr 1fr;
   }
 
-  .nav__links {
-    gap: 0;
+  .dashboard__motivation {
+    padding: 1.5rem;
   }
 
-  .nav__link {
-    padding: 0.4rem 0.75rem;
-    font-size: 0.8rem;
+  .dashboard__motivation-text {
+    font-size: 1.1rem;
   }
 
   .workouts__schedule {
@@ -1336,11 +1385,37 @@
     flex-direction: column;
     align-items: center;
   }
+  .workouts__active-exercise {
+    padding: 1.25rem;
+  }
+  .workouts__active-exercise-name {
+    font-size: 1.2rem;
+  }
   .nutrition__chart-section {
     flex-direction: column;
   }
   .nutrition__food-grid {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  .nutrition__meal-plan-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-header__title {
+    font-size: 1.5rem;
+  }
+
+  .ai-coach__header {
+    padding: 1.5rem 1.25rem;
+  }
+  .ai-coach__header-title {
+    font-size: 1.5rem;
+  }
+  .ai-coach__header-desc {
+    font-size: 0.9rem;
+  }
+  .ai-coach__quick-actions {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1349,8 +1424,39 @@
    ============================================================ */
 
 @media (max-width: 480px) {
+  .page-content {
+    padding: 0.75rem;
+  }
+
+  .landing {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
   .landing__features {
     grid-template-columns: 1fr;
+  }
+
+  .landing__hero-image {
+    max-height: 25vh;
+    max-width: min(280px, 85vw);
+  }
+
+  .landing__credit {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .onboarding {
+    padding: 1rem;
+  }
+
+  .onboarding__card {
+    padding: 1.25rem;
   }
 
   .onboarding__goals {
@@ -1361,8 +1467,21 @@
     grid-template-columns: 1fr;
   }
 
+  .dashboard__stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
   .dashboard__actions {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .dashboard__nav-cards {
+    gap: 1rem;
+  }
+
+  .dashboard__progress-section {
+    grid-template-columns: 1fr;
   }
 
   .landing__stats {
@@ -1370,8 +1489,30 @@
   }
 
   .workouts__schedule {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.15rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
   }
+  .workouts__schedule-day {
+    min-width: 42px;
+    padding: 0.4rem 0.15rem;
+  }
+  .workouts__schedule-day-name {
+    font-size: 0.55rem;
+  }
+  .workouts__schedule-day-label {
+    font-size: 0.6rem;
+  }
+
+  .workouts__exercise-item {
+    padding: 0.75rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
   .nutrition__summary {
     grid-template-columns: 1fr 1fr;
   }
@@ -1382,6 +1523,29 @@
     width: 40px;
     height: 40px;
     font-size: 1.2rem;
+  }
+  .nutrition__food-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .nutrition__food-card {
+    padding: 1rem;
+  }
+
+  .ai-coach__chat {
+    max-height: 50vh;
+    padding: 0.75rem;
+  }
+  .ai-coach__message {
+    max-width: 92%;
+    padding: 0.75rem 1rem;
+  }
+  .ai-coach__input-area {
+    padding: 0.5rem 0.75rem;
+  }
+  .ai-coach__send-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
   }
 }
 
