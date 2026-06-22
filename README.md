@@ -54,14 +54,6 @@
 - Personal records dashboard
 - Weight change indicators (gain/loss since start)
 
-### 🤖 AI Coach (Gemini-Powered)
-- Chat-based personal fitness & nutrition AI coach
-- Context-aware — knows your stats, goals, workout history, and nutrition log
-- **Workout planner** — generates custom routines based on your profile
-- **Meal planner** — creates personalized meal plans for your calorie targets
-- **Progress analyzer** — AI reviews your data and gives insights
-- Streaming responses for real-time chat feel
-- Powered by Google Gemini API (free tier compatible)
 
 ### ⚙️ Settings & Data
 - Dark / Light theme toggle with smooth transitions
